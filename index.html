@@ -2,9 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amr & Reem Wedding</title>
+    <title>Amr & Reem Wedding Invitation</title>
     <style>
+        /* ستايل الخلفية الفخمة */
         body { margin: 0; background: #05160a; color: #d4af37; font-family: 'Times New Roman', serif; overflow-x: hidden; }
         
         /* الظرف الأخضر المطرّز */
@@ -19,24 +19,48 @@
             font-size: 30px; box-shadow: 0 0 25px #ffd700; border: 2px solid #ffd700;
         }
 
-        /* خلفية خضراء زمردية بتلمع */
-        .main-page { 
-            padding: 40px; text-align: center; 
-            background: radial-gradient(circle at center, #1b4b2e 0%, #050d06 100%); 
-            min-height: 100vh;
-        }
+        /* صفحة الدعوة الرئيسية */
+        .main-page { padding: 50px 20px; text-align: center; background: radial-gradient(circle at center, #1b4b2e 0%, #050d06 100%); min-height: 100vh; }
+        
+        /* الصور والقصة (مربعات منظمة) */
+        .story-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1100px; margin: 40px auto; }
+        .card { border: 2px solid #c5a059; padding: 15px; background: rgba(0,0,0,0.3); transition: 0.3s; }
+        .card:hover { transform: scale(1.03); }
+        .card img { width: 100%; height: 300px; object-fit: cover; border-radius: 5px; }
 
-        /* تنظيم الصور (الستوري) */
-        .story-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; padding: 20px; max-width: 1000px; margin: auto;
-        }
-        .story-card { 
-            border: 1px solid #c5a059; padding: 15px; background: rgba(255,255,255,0.03);
-            transition: 0.5s; cursor: pointer;
-        }
-        .story-card:hover { transform: scale(1.05); border-color: #fff; }
+        /* الأزرار واللوكيشن */
+        .btn { background: #c5a059; color: #000; padding: 15px 40px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 30px; font-size: 18px; }
+        
+        h1 { font-size: 45px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
 
-        .btn { 
-            background: #c5a059; color: black; padding: 15px 40px; 
-            text-decoration: none; font-weight: bold; display: inline-block;
+    <audio id="myAudio" src="Swany.mp3" loop></audio>
+
+    <div id="envelope" onclick="document.getElementById('myAudio').play(); this.style.display='none'">
+        <div class="seal">R&A</div>
+    </div>
+
+    <div class="main-page">
+        <h1>Wedding of Reem & Amr</h1>
+        <p style="font-size: 22px;">25 July 2026 | 06:00 PM</p>
+
+        <div class="story-container">
+            <div class="card"><img src="1781194288956.jpeg"><p>لقاؤنا الأول</p></div>
+            <div class="card"><img src="1781194320400.jpeg"><p>حكايتنا</p></div>
+        </div>
+
+        <a href="https://maps.google.com" class="btn">اضغطي هنا للوكيشن القاعة</a>
+
+        <div style="margin-top: 60px;">
+            <h3>شاركينا أجمل الأمنيات</h3>
+            <form action="https://formspree.io/f/mbdeanjp" method="POST">
+                <textarea name="message" placeholder="اكتبي تهنئتك لنا..." style="width: 80%; height: 100px; padding: 10px; background: rgba(0,0,0,0.3); color: #d4af37; border: 1px solid #c5a059;"></textarea><br>
+                <button type="submit" class="btn">إرسال التهنئة</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
