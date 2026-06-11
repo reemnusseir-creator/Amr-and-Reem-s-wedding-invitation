@@ -1,93 +1,45 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Wedding Invitation | Reem & Amr</title>
+    <title>Wedding of Reem & Amr</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Tajawal:wght@300;400&display=swap');
-        
-        body { margin: 0; background-color: #fcfaf3; color: #5c4d44; font-family: 'Tajawal', sans-serif; overflow-x: hidden; }
-        
-        /* 1. صفحة الظرف (مليانة ورد مائي) */
-        #opener { 
-            position: fixed; inset: 0; z-index: 9999; 
-            background: url('https://img.freepik.com/free-vector/watercolor-floral-background_52683-65977.jpg') center/cover;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            cursor: pointer; transition: 1.5s; 
-        }
-        .seal { width: 160px; height: 160px; border: 3px double #c5a059; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #c5a059; font-size: 26px; background: rgba(255,255,255,0.7); backdrop-filter: blur(5px); }
+        body { margin: 0; background: #fdfaf6; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
 
-        /* 2. الأقسام (كل قسم ياخد الشاشة كلها) */
-        .page-section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px; border-bottom: 1px solid #e0d8c3; }
+        /* الظرف */
+        #envelope { width: 300px; height: 200px; background: #dcd0c0; position: relative; cursor: pointer; transition: 1s; }
+        .seal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: #c5a059; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+
+        /* الكارت اللي بيظهر (Glassmorphism) */
+        #invitation { display: none; width: 85%; max-width: 450px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid #dcd0c0; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         
-        /* 3. تنسيق المحتوى */
-        .content-box { background: rgba(255,255,255,0.6); padding: 40px; border-radius: 20px; border: 1px solid #d4c4a8; text-align: center; max-width: 500px; }
-        .timeline { border-right: 3px solid #c5a059; padding-right: 25px; margin-top: 20px; text-align: right; }
-        .timeline-event { margin-bottom: 25px; }
-        .gold-btn { background: #c5a059; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
+        .fade-in { animation: fadeIn 2s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
     <audio id="music" src="Swany.mp3" loop></audio>
 
-    <!-- واجهة الظرف -->
-    <div id="opener" onclick="playMusic()">
-        <div class="seal">Reem & Amr</div>
-        <p style="font-size: 18px; margin-top: 20px;">اضغطي لفتح الدعوة</p>
+    <div id="envelope" onclick="openInvitation()">
+        <div class="seal">R&A</div>
     </div>
 
-    <!-- المحتوى (طويل ومتروس تفاصيل) -->
-    <div class="page-section">
-        <h1>Wedding of Reem & Amr</h1>
-        <p style="font-size: 20px;">25 July 2026</p>
-    </div>
-
-    <div class="page-section">
-        <div class="content-box">
-            <h2 style="font-family: 'Amiri';">آية من القرآن</h2>
-            <p>"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً"</p>
-        </div>
-    </div>
-
-    <div class="page-section">
-        <h3>العد التنازلي</h3>
-        <div id="countdown" style="font-size: 30px; font-weight: bold; color: #c5a059;"></div>
-    </div>
-
-    <div class="page-section">
-        <div class="content-box">
-            <h3>برنامج الحفل</h3>
-            <div class="timeline">
-                <div class="timeline-event"><b>7:00 PM</b> - استقبال الضيوف</div>
-                <div class="timeline-event"><b>8:00 PM</b> - العشاء</div>
-                <div class="timeline-event"><b>9:00 PM</b> - وصول العروسين</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="page-section">
-        <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6" class="gold-btn">موقع القاعة (Villa Bashari)</a>
-        <br><br>
-        <div class="content-box">
-            <h3>سجل الأمنيات</h3>
-            <form action="https://formspree.io/f/mbdeanjp" method="POST">
-                <textarea name="wishes" style="width: 100%; height: 80px; border: 1px solid #c5a059; border-radius: 10px;"></textarea><br>
-                <button type="submit" class="gold-btn" style="padding: 10px 20px; margin-top: 10px;">إرسال</button>
-            </form>
-        </div>
+    <div id="invitation" class="fade-in">
+        <h2 style="color: #5c4d44;">Wedding Invitation</h2>
+        <h1 style="color: #c5a059;">ريم & عمرو</h1>
+        <p>يسعدنا دعوتكم لمشاركتنا ليلة العمر</p>
+        <hr style="border: 0; border-top: 1px solid #dcd0c0; margin: 20px 0;">
+        <p>25 July 2026</p>
+        <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6?g_st=ac" style="display:block; margin-top:20px; color:#c5a059; text-decoration:none; font-weight:bold;">📍 موقع القاعة (Villa Bashari)</a>
     </div>
 
     <script>
-        function playMusic() {
-            document.getElementById('opener').style.opacity = '0';
-            setTimeout(() => document.getElementById('opener').style.display = 'none', 1000);
+        function openInvitation() {
+            document.getElementById('envelope').style.display = 'none';
+            document.getElementById('invitation').style.display = 'block';
             document.getElementById('music').play();
         }
-        setInterval(() => {
-            const d = Math.floor((new Date("July 25, 2026") - new Date()) / 86400000);
-            document.getElementById('countdown').innerHTML = d + " يوم";
-        }, 1000);
     </script>
 </body>
 </html>
