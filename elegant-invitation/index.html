@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amr & Reem - Wedding Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="invitation-container">
+        <!-- Page 1: The Opening (Envelope) -->
+        <div class="page envelope-page" data-page="1">
+            <div class="envelope-wrapper">
+                <div class="envelope">
+                    <div class="envelope-front">
+                        <div class="envelope-pattern"></div>
+                        <div class="wax-seal">
+                            <div class="wax-seal-inner">♥</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="tap-text">Tap to open 💌</p>
+            </div>
+        </div>
+
+        <!-- Page 2: The Welcome -->
+        <div class="page welcome-page" data-page="2">
+            <div class="content-wrapper">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">You are invited</h1>
+                    <p class="welcome-subtitle">to the wedding of</p>
+                    <h2 class="couple-names">Amr & Reem</h2>
+                    <p class="welcome-tagline">The Blueprint That Changed Everything</p>
+                    <div class="decorative-line"></div>
+                    <p class="welcome-text">Two hearts, one dream, a lifetime of joy ahead.</p>
+                </div>
+            </div>
+            <div class="page-indicator">2 / 8</div>
+        </div>
+
+        <!-- Page 3: Our Story - Chapter 1 -->
+        <div class="page story-page" data-page="3">
+            <div class="content-wrapper">
+                <div class="story-content">
+                    <h3 class="chapter-title">Chapter 1</h3>
+                    <h2 class="chapter-heading">The Beginning</h2>
+                    <p class="story-text">It all started with an unexpected moment. Amr was deep in his plans, working on his blueprints, when Reem walked in and changed everything. Sometimes the best plans are the ones life surprises us with.</p>
+                    <p class="story-date">2020</p>
+                </div>
+            </div>
+            <div class="page-indicator">3 / 8</div>
+        </div>
+
+        <!-- Page 4: Our Story - Chapter 2 -->
+        <div class="page story-page" data-page="4">
+            <div class="content-wrapper">
+                <div class="story-content">
+                    <h3 class="chapter-title">Chapter 2</h3>
+                    <h2 class="chapter-heading">Building Together</h2>
+                    <p class="story-text">From coffee dates to late-night conversations, every moment was special. We learned that the best partnerships blend precision with spontaneity, logic with love.</p>
+                    <p class="story-date">2021 - 2024</p>
+                </div>
+            </div>
+            <div class="page-indicator">4 / 8</div>
+        </div>
+
+        <!-- Page 5: Our Story - Chapter 3 -->
+        <div class="page story-page" data-page="5">
+            <div class="content-wrapper">
+                <div class="story-content">
+                    <h3 class="chapter-title">Chapter 3</h3>
+                    <h2 class="chapter-heading">The Promise</h2>
+                    <p class="story-text">On one perfect evening, Amr asked the question we both knew was coming. With a ring as unique as our love story, he asked Reem to be his forever blueprint.</p>
+                    <p class="story-date">2025</p>
+                </div>
+            </div>
+            <div class="page-indicator">5 / 8</div>
+        </div>
+
+        <!-- Page 6: Event Details -->
+        <div class="page details-page" data-page="6">
+            <div class="content-wrapper">
+                <h2 class="section-title">Our Special Day</h2>
+                
+                <div class="details-card">
+                    <div class="detail-item">
+                        <span class="detail-icon">📅</span>
+                        <div class="detail-info">
+                            <h3>Date</h3>
+                            <p>Saturday, July 25, 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-card">
+                    <div class="detail-item">
+                        <span class="detail-icon">🕐</span>
+                        <div class="detail-info">
+                            <h3>Time</h3>
+                            <p>6:00 PM - Late Evening</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details-card">
+                    <div class="detail-item">
+                        <span class="detail-icon">📍</span>
+                        <div class="detail-info">
+                            <h3>Location</h3>
+                            <p>Villa Bashari</p>
+                            <p class="location-sub">Giza, Egypt</p>
+                            <a href="https://maps.google.com/?q=Villa+Bashari+Giza" target="_blank" class="map-link">View on Map 🗺️</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-indicator">6 / 8</div>
+        </div>
+
+        <!-- Page 7: Wishes Box -->
+        <div class="page wishes-page" data-page="7">
+            <div class="content-wrapper">
+                <h2 class="section-title">Our Special Day</h2>
+                <p class="wishes-intro">Your presence is our true celebration.</p>
+                <p class="wishes-subtitle">Share your warm wishes directly into our memory book.</p>
+
+                <form class="wishes-form" id="wishesForm">
+                    <div class="form-group">
+                        <input type="text" id="wishName" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="wishMessage" placeholder="Your wishes & blessings..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Wishes 💝</button>
+                </form>
+
+                <div class="wishes-list" id="wishesList">
+                    <h3>Messages from our guests</h3>
+                    <div id="wishesDisplay"></div>
+                </div>
+            </div>
+            <div class="page-indicator">7 / 8</div>
+        </div>
+
+        <!-- Page 8: Closing -->
+        <div class="page closing-page" data-page="8">
+            <div class="content-wrapper">
+                <div class="closing-content">
+                    <h1 class="closing-title">We are waiting for you!</h1>
+                    <p class="closing-message">July 25, 2026</p>
+                    <p class="closing-message">Villa Bashari</p>
+                    <p class="closing-tagline">Can't wait to celebrate with you</p>
+                    <div class="closing-hearts">💚 ❤️ 💚</div>
+                </div>
+            </div>
+            <div class="page-indicator">8 / 8</div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn prev-btn" id="prevBtn" style="display: none;">← Back</button>
+        <div class="page-counter" id="pageCounter">1 / 8</div>
+        <button class="nav-btn next-btn" id="nextBtn">Next →</button>
+    </div>
+
+    <!-- Mobile swipe indicator -->
+    <div class="swipe-indicator">Swipe or use arrows to navigate</div>
+
+    <script src="script.js"></script>
+</body>
+</html>
