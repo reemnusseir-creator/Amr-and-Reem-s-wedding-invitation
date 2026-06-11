@@ -25,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* الجزء العلوي الفخم */
         .hero-section {
             padding: 100px 20px 60px;
             background: linear-gradient(rgba(252,251,250,0.85), rgba(252,251,250,1)), url('Chapter4.jpg') no-repeat center/cover;
@@ -57,7 +56,6 @@
             font-weight: 400;
         }
 
-        /* العداد التنازلي الرايق */
         .countdown-title {
             color: var(--accent-gold);
             font-weight: 400;
@@ -74,24 +72,10 @@
             max-width: 350px;
         }
         
-        .time-box {
-            flex: 1;
-            padding: 10px;
-        }
-        
-        .time-box span {
-            display: block;
-            font-size: 2rem;
-            font-weight: 300;
-            color: var(--text-main);
-        }
-        
-        .time-box label {
-            font-size: 0.8rem;
-            color: #999;
-        }
+        .time-box { flex: 1; padding: 10px; }
+        .time-box span { display: block; font-size: 2rem; font-weight: 300; color: var(--text-main); }
+        .time-box label { font-size: 0.8rem; color: #999; }
 
-        /* قسم الحكاية الأنيق */
         .section-title {
             color: var(--accent-gold);
             font-size: 1.8rem;
@@ -109,11 +93,7 @@
             margin: 10px auto 0;
         }
 
-        .story-container {
-            max-width: 550px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .story-container { max-width: 550px; margin: 0 auto; padding: 0 20px; }
 
         .chapter-card {
             background: white;
@@ -124,39 +104,121 @@
             border: 1px solid #f0ede6;
         }
         
-        .chapter-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .chapter-content {
-            padding: 25px 20px;
-            text-align: right;
-        }
-        
-        .chapter-content h3 {
-            color: var(--accent-gold);
-            font-size: 1.3rem;
-            margin: 0 0 10px 0;
-            font-weight: 500;
-        }
-        
-        .chapter-content p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin: 0;
+        .chapter-card img { width: 100%; height: 300px; object-fit: cover; display: block; }
+        .chapter-content { padding: 25px 20px; text-align: right; }
+        .chapter-content h3 { color: var(--accent-gold); font-size: 1.3rem; margin: 0 0 10px 0; font-weight: 500; }
+        .chapter-content p { color: #666; font-size: 0.95rem; line-height: 1.6; margin: 0; }
+
+        .details-container { background-color: var(--cream-card); padding: 50px 20px; margin: 60px 0; }
+        .details-box h3 { color: var(--accent-gold); font-size: 1.5rem; font-weight: 400; margin-top: 0; }
+        .details-box p { font-size: 1.1rem; margin: 10px 0; color: var(--text-main); }
+
+        .rsvp-section { padding: 60px 20px; background: white; }
+        .rsvp-section p { max-width: 400px; margin: 10px auto; line-height: 1.6; }
+
+        .btn {
+            background-color: var(--accent-gold);
+            color: white;
+            border: none;
+            padding: 12px 45px;
+            font-size: 1rem;
+            border-radius: 2px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 25px;
+            letter-spacing: 1px;
         }
 
-        /* تفاصيل الفرح */
-        .details-container {
-            background-color: var(--cream-card);
-            padding: 50px 20px;
-            margin: 60px 0;
-        }
+        audio { display: none !important; }
+    </style>
+</head>
+<body>
 
-        .details-box h3 {
-            color: var(--accent-gold);
-            font-size:
+    <audio autoplay loop id="bgMusic">
+        <source src="Swany.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hero-section">
+        <h1>Amr & Reem</h1>
+        <p>Together Forever</p>
+        <div class="wedding-date">25 يوليو 2026</div>
+    </div>
+
+    <div class="countdown-title">اليوم المنتظر</div>
+    <div class="countdown-container">
+        <div class="time-box"><span id="days">00</span><label>أيام</label></div>
+        <div class="time-box"><span id="hours">00</span><label>ساعات</label></div>
+        <div class="time-box"><span id="minutes">00</span><label>دقائق</label></div>
+    </div>
+
+    <div class="story-container">
+        <div class="section-title">حكايتنا</div>
+        
+        <div class="chapter-card">
+            <img src="Chapter1.jpg" alt="Chapter 1">
+            <div class="chapter-content">
+                <h3>الفصل الأول: البداية</h3>
+                <p>تفاصيل القصة الأولى والترتيبات الجميلة التي جمعتنا...</p>
+            </div>
+        </div>
+
+        <div class="chapter-card">
+            <img src="Chapter2.jpg" alt="Chapter 2">
+            <div class="chapter-content">
+                <h3>الفصل الثاني: التفاصيل</h3>
+                <p>حكاية التخطيط والخطوات التي مشيناها معاً بكل حب...</p>
+            </div>
+        </div>
+
+        <div class="chapter-card">
+            <img src="Chapter3.jpg" alt="Chapter 3">
+            <div class="chapter-content">
+                <h3>الفصل الثالث: يوم الخطوبة</h3>
+                <p>ذكريات اليوم الذي جمع قلوبنا وبداية الحلم الكبير...</p>
+            </div>
+        </div>
+
+        <div class="chapter-card">
+            <img src="Chapter4.jpg" alt="Chapter 4">
+            <div class="chapter-content">
+                <h3>الفصل الرابع: فرحتنا الكبيرة</h3>
+                <p>تجهيز مكاننا الصغير وفرحتنا الكبيرة التي تكتمل بوجودكم معنا...</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="details-container">
+        <div class="details-box">
+            <h3>تفاصيل الحفل</h3>
+            <p>📍 <strong>المكان:</strong> Villa Bashari, Giza</p>
+            <p>⏰ <strong>الوقت:</strong> الساعة 6:00 مساءً</p>
+        </div>
+    </div>
+
+    <div class="rsvp-section">
+        <h3>Our Special Day</h3>
+        <p style="color: #666;">وجودكم معنا هو فرحتنا الحقيقية، شاركونا بكلماتكم الجميلة ودعواتكم اللطيفة التي تخلد ذكرى هذا اليوم في قلوبنا.</p>
+        <a href="https://forms.google.com" target="_blank" class="btn">اترك كلمة للذكرى ✨</a>
+    </div>
+
+    <p style="margin: 60px 0; color: #bbb; font-size: 0.8rem; letter-spacing: 1px;">MADE WITH LOVE FOR AMR & REEM</p>
+
+    <script>
+        const weddingDate = new Date("July 25, 2026 18:00:00").getTime();
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        }, 1000);
+
+        function playAudio() {
+            document.getElementById('bgMusic').play().catch(e => console.log("Autoplay blocked"));
+        }
+        window.addEventListener('click', playAudio, { once: true });
+        window.addEventListener('touchstart', playAudio, { once: true });
+    </script>
+</body>
+</html>
