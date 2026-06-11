@@ -9,11 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fcfbfa; /* أوف وايت راقي ونظيف جداً */
+            --bg-color: #fcfbfa; 
             --card-bg: #ffffff;
-            --text-main: #2b2b2b; /* رمادي داكن فخم جداً للخطوط رفيعة */
+            --text-main: #2b2b2b; 
             --text-muted: #706f6c;
-            --accent-gold: #a38f6d; /* ذهبي مطفي هادي */
+            --accent-gold: #a38f6d; 
             --light-cream: #f7f5f0;
         }
         
@@ -26,20 +26,94 @@
             text-align: center;
             overflow-x: hidden;
             letter-spacing: 1px;
+        }
+
+        /* 1. مقدمة الفيديو السينمائية (Cinematic Intro) */
+        .intro-video-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* خلفية الفيديو الطبيعية والورد */
+        .intro-video-section video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.6; /* تعتيم خفيف ليظهر الكلام بفخامة */
+            z-index: 1;
+        }
+
+        /* محتوى المقدمة فوق الفيديو */
+        .intro-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            padding: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             opacity: 0;
-            animation: fadeInPage 2s ease-in forwards;
+            transform: scale(0.95);
+            animation: fadeInIntro 2.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            animation-delay: 0.5s;
         }
 
-        @keyframes fadeInPage {
-            to { opacity: 1; }
+        @keyframes fadeInIntro {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        /* Hero Section - ستايل المجلة الراقية */
-        .hero-section {
-            padding: 140px 20px 80px;
-            background: linear-gradient(rgba(252,251,250,0.8), rgba(252,251,250,1));
+        .intro-content p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            color: #f5f2eb;
         }
-        
+
+        .intro-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 300;
+            margin: 0 0 30px 0;
+            letter-spacing: 4px;
+        }
+
+        .scroll-indicator {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            opacity: 0.8;
+            margin-top: 50px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* 2. باقي أجزاء الموقع الأليجانت */
+        .main-content {
+            padding: 100px 20px 60px;
+        }
+
         .hero-section h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3.5rem;
@@ -70,7 +144,6 @@
             letter-spacing: 3px;
         }
 
-        /* العداد التنازلي المودرن */
         .countdown-title {
             font-family: 'Cormorant Garamond', serif;
             color: var(--accent-gold);
@@ -87,10 +160,6 @@
             max-width: 300px;
         }
         
-        .time-box {
-            flex: 1;
-        }
-        
         .time-box span {
             display: block;
             font-size: 2.2rem;
@@ -105,7 +174,6 @@
             letter-spacing: 2px;
         }
 
-        /* قسم الحكاية الأنيق جداً */
         .section-title {
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-main);
@@ -126,28 +194,12 @@
             background: var(--card-bg);
             margin-bottom: 70px;
             text-align: left;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInCard 1.2s ease-out forwards;
-        }
-
-        .chapter-card:nth-child(2) { animation-delay: 0.3s; }
-        .chapter-card:nth-child(3) { animation-delay: 0.5s; }
-        .chapter-card:nth-child(4) { animation-delay: 0.7s; }
-        .chapter-card:nth-child(5) { animation-delay: 0.9s; }
-
-        @keyframes fadeInCard {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .chapter-card img {
             width: 100%;
             height: 380px;
             object-fit: cover;
-            filter: grayscale(15%);
         }
         
         .chapter-content {
@@ -190,7 +242,6 @@
             display: inline-block;
         }
 
-        /* تفاصيل الفرح البسيطة الفخمة */
         .details-container {
             background-color: var(--light-cream);
             padding: 80px 20px;
@@ -214,7 +265,7 @@
             font-weight: 300;
         }
 
-        /* قسم الرسائل والمباركات اللطيفة */
+        /* 3. صندوق الأمنيات المدمج الشيك جداً (Embedded Form) */
         .rsvp-section {
             padding: 80px 20px;
             background: white;
@@ -229,11 +280,47 @@
 
         .rsvp-section p {
             max-width: 420px;
-            margin: 10px auto 30px;
+            margin: 10px auto 40px;
             line-height: 1.8;
             font-size: 0.85rem;
             color: var(--text-muted);
             font-weight: 300;
+        }
+
+        .wishes-form {
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 1px solid #e0ded9;
+            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
         }
 
         .btn {
@@ -249,6 +336,7 @@
             display: inline-block;
             transition: all 0.3s ease;
             font-weight: 300;
+            width: 100%;
         }
         
         .btn:hover {
@@ -260,11 +348,7 @@
             color: var(--accent-gold);
             border: 1px solid var(--accent-gold);
             margin-top: 15px;
-        }
-
-        .btn-gold:hover {
-            background-color: var(--accent-gold);
-            color: white;
+            width: auto;
         }
 
         audio {
@@ -278,82 +362,105 @@
         <source src="Swany.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="hero-section">
-        <h1>Amr & Reem</h1>
-        <p>The Blueprint That Changed Everything</p>
-        <div class="wedding-date">July 25, 2026</div>
+    <div class="intro-video-section">
+        <video autoplay loop muted playsinline>
+            <source src="3719ce00d693071df1c10a404025d60b.mp4" type="video/mp4">
+        </video>
+        <div class="intro-content">
+            <p>You are invited to the wedding of</p>
+            <h2>Amr & Reem</h2>
+            <div class="scroll-indicator">Scroll Down to Discover Our Story ↓</div>
+        </div>
     </div>
 
-    <div class="countdown-title">The Countdown to Our Big Night</div>
-    <div class="countdown-container">
-        <div class="time-box"><span id="days">00</span><label>Days</label></div>
-        <div class="time-box"><span id="hours">00</span><label>Hrs</label></div>
-        <div class="time-box"><span id="minutes">00</span><label>Mins</label></div>
-    </div>
+    <div class="main-content">
+        <div class="hero-section">
+            <h1>Amr & Reem</h1>
+            <p>The Blueprint That Changed Everything</p>
+            <div class="wedding-date">July 25, 2026</div>
+        </div>
 
-    <div class="story-container">
-        <div class="section-title">Our Story</div>
-        
-        <div class="chapter-card">
-            <img src="Chapter1.jpg" alt="The Unplanned Variable">
-            <div class="chapter-content">
-                <div class="chapter-number">Chapter 01</div>
-                <h3>The Unplanned Variable</h3>
-                <p>Every engineer knows: the best projects have unexpected variables. Amr was deep in his calculations, planning, controlling every detail — when Reem walked in and turned his perfectly ordered world upside down. 🏗️<br><br><i>"Surprise... I'm your greatest plan."</i></p>
-                <div class="chapter-footer">Engineer Meets His Match</div>
+        <div class="countdown-title">The Countdown to Our Big Night</div>
+        <div class="countdown-container">
+            <div class="time-box"><span id="days">00</span><label>Days</label></div>
+            <div class="time-box"><span id="hours">00</span><label>Hrs</label></div>
+            <div class="time-box"><span id="minutes">00</span><label>Mins</label></div>
+        </div>
+
+        <div class="story-container">
+            <div class="section-title">Our Story</div>
+            
+            <div class="chapter-card">
+                <img src="Chapter1.jpg" alt="The Unplanned Variable">
+                <div class="chapter-content">
+                    <div class="chapter-number">Chapter 01</div>
+                    <h3>The Unplanned Variable</h3>
+                    <p>Every engineer knows: the best projects have unexpected variables. Amr was deep in his calculations, planning, controlling every detail — when Reem walked in and turned his perfectly ordered world upside down. 🏗️<br><br><i>"Surprise... I'm your greatest plan."</i></p>
+                    <div class="chapter-footer">Engineer Meets His Match</div>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <img src="Chapter2.jpg" alt="Calculations & Chaos">
+                <div class="chapter-content">
+                    <div class="chapter-number">Chapter 02</div>
+                    <h3>Calculations & Chaos</h3>
+                    <p>He tried to plan love like a project. She laughed at every blueprint. Between his engineering logic and her perfect chaos, they built something neither could have designed alone — inside jokes, sweet arguments, and a bond stronger than reinforced concrete. 💪</p>
+                    <div class="chapter-footer">The Beautiful Disagreements</div>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <img src="Chapter3.jpg" alt="The Final Blueprint">
+                <div class="chapter-content">
+                    <div class="chapter-number">Chapter 03</div>
+                    <h3>The Final Blueprint</h3>
+                    <p>A black suit. A white embroidered dress. Two hearts that finally surrendered. Sometimes excited, bouncing with joy — sometimes serene, gazing at each other in quiet wonder. Both are real. Both are them. 🖤🤍</p>
+                    <div class="chapter-footer">Project Approved ✓</div>
+                </div>
+            </div>
+
+            <div class="chapter-card">
+                <img src="Chapter4.jpg" alt="The Villa of Dreams">
+                <div class="chapter-content">
+                    <div class="chapter-number">Chapter 04</div>
+                    <h3>The Villa of Dreams</h3>
+                    <p>Roses in every color. A garden alive with light. Candles that whisper warmth into the evening air. This is where the story becomes a celebration — surrounded by everyone who loves them, on the most beautiful summer night. 🌙</p>
+                    <div class="chapter-footer">25 July 2026 · The Big Night</div>
+                </div>
             </div>
         </div>
 
-        <div class="chapter-card">
-            <img src="Chapter2.jpg" alt="Calculations & Chaos">
-            <div class="chapter-content">
-                <div class="chapter-number">Chapter 02</div>
-                <h3>Calculations & Chaos</h3>
-                <p>He tried to plan love like a project. She laughed at every blueprint. Between his engineering logic and her perfect chaos, they built something neither could have designed alone — inside jokes, sweet arguments, and a bond stronger than reinforced concrete. 💪</p>
-                <div class="chapter-footer">The Beautiful Disagreements</div>
+        <div class="details-container">
+            <div class="details-box">
+                <h3>Event Details</h3>
+                <p><strong>VENUE:</strong> Villa Bashari, Giza</p>
+                <p><strong>TIME:</strong> 6:00 PM</p>
+                <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6?g_st=ac" target="_blank" class="btn btn-gold">View Location Map</a>
             </div>
         </div>
 
-        <div class="chapter-card">
-            <img src="Chapter3.jpg" alt="The Final Blueprint">
-            <div class="chapter-content">
-                <div class="chapter-number">Chapter 03</div>
-                <h3>The Final Blueprint</h3>
-                <p>A black suit. A white embroidered dress. Two hearts that finally surrendered. Sometimes excited, bouncing with joy — sometimes serene, gazing at each other in quiet wonder. Both are real. Both are them. 🖤🤍</p>
-                <div class="chapter-footer">Project Approved ✓</div>
-            </div>
+        <div class="rsvp-section">
+            <h3>Our Special Day</h3>
+            <p>Your presence is our true celebration. Share your warm wishes, sweet messages, or heartfelt prayers directly into our memory book.</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="wishes-form">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Your Message & Wishes</label>
+                    <textarea name="message" rows="4" placeholder="Write your sweet words here..." required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Wishes ✨</button>
+            </form>
         </div>
 
-        <div class="chapter-card">
-            <img src="Chapter4.jpg" alt="The Villa of Dreams">
-            <div class="chapter-content">
-                <div class="chapter-number">Chapter 04</div>
-                <h3>The Villa of Dreams</h3>
-                <p>Roses in every color. A garden alive with light. Candles that whisper warmth into the evening air. This is where the story becomes a celebration — surrounded by everyone who loves them, on the most beautiful summer night. 🌙</p>
-                <div class="chapter-footer">25 July 2026 · The Big Night</div>
-            </div>
-        </div>
+        <p style="margin: 80px 0 60px; color: #b5b3ae; font-size: 0.75rem; font-weight:300; letter-spacing: 2px;">MADE WITH LOVE FOR AMR & REEM</p>
     </div>
-
-    <div class="details-container">
-        <div class="details-box">
-            <h3>Event Details</h3>
-            <p><strong>VENUE:</strong> Villa Bashari, Giza</p>
-            <p><strong>TIME:</strong> 6:00 PM</p>
-            <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6?g_st=ac" target="_blank" class="btn btn-gold">View Location Map</a>
-        </div>
-    </div>
-
-    <div class="rsvp-section">
-        <h3>Our Special Day</h3>
-        <p>Your presence is our true celebration. Share your warm wishes, sweet messages, or heartfelt prayers to be preserved in our hearts forever.</p>
-        <a href="mailto:reemnusseir@gmail.com?subject=Wedding%20Wishes%20for%20Amr%20%26%20Reem" class="btn">Send Warm Wishes ✨</a>
-    </div>
-
-    <p style="margin: 80px 0 60px; color: #b5b3ae; font-size: 0.75rem; font-weight:300; letter-spacing: 2px;">MADE WITH LOVE FOR AMR & REEM</p>
 
     <script>
-        // العداد التنازلي
         const weddingDate = new Date("July 25, 2026 18:00:00").getTime();
         setInterval(function() {
             const now = new Date().getTime();
@@ -363,7 +470,6 @@
             document.getElementById("minutes").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         }, 1000);
 
-        // مشغل الصوت السحري عند لمس الشاشة
         function playAudio() {
             document.getElementById('bgMusic').play().catch(e => console.log("Autoplay waiting"));
         }
@@ -372,3 +478,4 @@
     </script>
 </body>
 </html>
+
