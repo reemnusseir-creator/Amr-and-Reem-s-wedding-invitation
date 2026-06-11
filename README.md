@@ -2,70 +2,89 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>Wedding Invitation | R&A</title>
+    <title>Wedding of Reem & Amr</title>
     <style>
-        body { margin: 0; background: #0c2415; color: #d4af37; font-family: 'Times New Roman', serif; overflow: hidden; }
+        body { margin: 0; background: #05160a; color: #4a3728; font-family: 'Georgia', serif; }
         
-        /* الظرف اللي بيفتح */
-        #envelope-area {
-            position: fixed; inset: 0; z-index: 100;
-            display: flex; justify-content: center; align-items: center;
-            background: #0f2e1a; transition: 1.5s;
+        /* Page 1: Opening */
+        #envelope-page { 
+            position: fixed; inset: 0; background: #05160a; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            z-index: 9999; cursor: pointer; border: 20px double #c5a059;
         }
-        .envelope {
-            width: 300px; height: 200px; background: #1a4a2b; border: 2px solid #c5a059;
-            cursor: pointer; position: relative; transition: 1s;
+        .wax-seal { 
+            width: 150px; height: 150px; background: #8b0000; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; color: #ffd700; 
+            font-size: 30px; border: 5px dashed #ffd700; box-shadow: 0 0 30px #ffd700;
         }
-        .flap {
-            position: absolute; top: 0; left: 0; width: 100%; height: 50%;
-            background: #153b23; clip-path: polygon(0 0, 100% 0, 50% 100%);
-            transition: 1s; transform-origin: top;
-        }
-        .open .flap { transform: rotateX(180deg); }
-        .open { transform: scale(1.2); opacity: 0; pointer-events: none; }
 
-        /* الدعوة والورد */
-        #content { opacity: 0; transition: 2s; text-align: center; padding: 50px; }
-        .petal { position: absolute; background: #c5a059; border-radius: 100% 0; opacity: 0.6; animation: fall linear infinite; }
-        @keyframes fall { to { transform: translateY(100vh) rotate(360deg); } }
+        /* General Pages */
+        .page { padding: 40px; text-align: center; background: #fdfaf6; min-height: 100vh; display: none; }
+        h1 { color: #05160a; }
+        .story-img { width: 100%; max-width: 400px; margin: 20px 0; border: 5px solid #d4af37; }
+        .btn { background: #05160a; color: #d4af37; padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <audio id="music" src="Swany.mp3"></audio>
+    <audio id="music" src="Swany.mp3" loop></audio>
 
-    <div id="envelope-area" onclick="openInvitation()">
-        <div class="envelope">
-            <div class="flap"></div>
-            <div style="text-align: center; margin-top: 80px; font-size: 30px;">R & A</div>
-        </div>
+    <!-- Page 1: Opening -->
+    <div id="envelope-page" onclick="openInvitation()">
+        <div class="wax-seal">R & A</div>
+        <p style="color: #c5a059; margin-top: 20px;">اضغطي لفتح الظرف</p>
     </div>
 
-    <div id="content">
-        <h1>Wedding of Reem & Amr</h1>
-        <p>25 July 2026</p>
-        <div style="display: flex; justify-content: center; gap: 20px;">
-            <img src="1781194288956.jpeg" style="width: 200px; border: 2px solid #c5a059;">
-            <img src="1781194320400.jpeg" style="width: 200px; border: 2px solid #c5a059;">
-        </div>
+    <!-- Page 2: Welcome -->
+    <div id="page2" class="page" style="display: block;">
+        <h1>You are invited to the wedding of Amr & Reem</h1>
+        <p>"The Blueprint That Changed Everything."</p>
+        <button class="btn" onclick="nextPage('page3')">ابدئي الرحلة</button>
+    </div>
+
+    <!-- Pages 3-5: Story -->
+    <div id="page3" class="page">
+        <h1>رحلتنا</h1>
+        <img src="1781194288956.jpeg" class="story-img">
+        <p>بداية الحكاية</p>
+        <button class="btn" onclick="nextPage('page4')">التالي</button>
+    </div>
+
+    <div id="page4" class="page">
+        <h1>الخطوبة</h1>
+        <img src="1781194320400.jpeg" class="story-img">
+        <p>لحظة غيرت كل شيء</p>
+        <button class="btn" onclick="nextPage('page6')">التالي</button>
+    </div>
+
+    <!-- Page 6: Details -->
+    <div id="page6" class="page">
+        <h1>Event Details</h1>
+        <p>July 25, 2026 | 06:00 PM</p>
+        <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6" class="btn">Location: Villa Bashari</a>
         <br>
-        <a href="https://maps.app.goo.gl/qVDhujncTiB6yjYX6?g_st=ac" style="color: #c5a059; font-size: 20px;">اضغطي هنا للوكيشن</a>
+        <button class="btn" onclick="nextPage('page7')">التالي</button>
+    </div>
+
+    <!-- Page 7: Wishes -->
+    <div id="page7" class="page">
+        <h1>Our Special Day</h1>
+        <p>Your presence is our true celebration. Share your warm wishes.</p>
+        <form action="https://formspree.io/f/mbdeanjp" method="POST">
+            <textarea name="wishes" style="width: 80%; height: 100px;"></textarea><br>
+            <button type="submit" class="btn">إرسال الأمنية</button>
+        </form>
+        <button class="btn" onclick="alert('We are waiting for you!')">الخاتمة</button>
     </div>
 
     <script>
         function openInvitation() {
-            document.getElementById('envelope-area').classList.add('open');
-            document.getElementById('content').style.opacity = '1';
+            document.getElementById('envelope-page').style.display = 'none';
             document.getElementById('music').play();
-            // بدء الورد
-            for(let i=0; i<30; i++) {
-                let p = document.createElement('div');
-                p.className = 'petal';
-                p.style.left = Math.random()*100 + 'vw';
-                p.style.width = p.style.height = Math.random()*15 + 10 + 'px';
-                p.style.animationDuration = Math.random()*3 + 3 + 's';
-                document.body.appendChild(p);
-            }
+        }
+        function nextPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
         }
     </script>
 </body>
