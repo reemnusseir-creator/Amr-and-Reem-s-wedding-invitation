@@ -1,200 +1,648 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دعوة زفاف عمرو وريم</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Tajawal:wght@300;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f7f5f0; /* بيج هادي ورايق */
-            --text-color: #4a4a4a; /* رمادي داكن شيك جداً */
-            --accent-color: #8c7853; /* لمسة خشبية دافية تليق على الجاردن */
-            --card-bg: #ffffff;
-        }
-        body {
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        .header-section {
-            padding: 60px 20px;
-            background: linear-gradient(rgba(247,245,240,0.85), rgba(247,245,240,0.95)), url('Chapter4.jpg') no-repeat center/cover;
-            border-bottom: 3px double var(--accent-color);
-        }
-        h1 { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 10px; }
-        .date { font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 30px; }
-        
-        /* مشغل الموسيقى الشيك */
-        .music-player {
-            background: var(--card-bg);
-            max-width: 320px;
-            margin: -20px auto 40px;
-            padding: 15px;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #e6e2da;
-        }
-        .music-player p { margin: 0 0 10px 0; font-size: 0.9rem; color: var(--accent-color); font-weight: bold; }
-        audio { width: 100%; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reem & Amr — Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* العداد التنازلي */
-        .countdown-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px auto;
-            max-width: 400px;
-        }
-        .time-box {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            flex: 1;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            border: 1px solid #e6e2da;
-        }
-        .time-box span { display: block; font-size: 1.8rem; font-weight: bold; color: var(--accent-color); }
-        .time-box label { font-size: 0.8rem; color: #888; }
+  :root {
+    --ivory: #FAF7F2;
+    --sage: #8A9E85;
+    --sage-light: #C5D4C0;
+    --gold: #C9A96E;
+    --mocha: #6B5544;
+    --text: #3D3530;
+  }
 
-        /* القصص والصور المترتبة */
-        .story-section { padding: 40px 20px; max-width: 600px; margin: 0 auto; }
-        .chapter-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #e6e2da;
-        }
-        .chapter-card img { width: 100%; height: 280px; object-fit: cover; display: block; }
-        .chapter-content { padding: 20px; text-align: right; }
-        .chapter-content h3 { color: var(--accent-color); margin-top: 0; }
+  body {
+    background: var(--ivory);
+    font-family: 'Jost', sans-serif;
+    color: var(--text);
+    overflow-x: hidden;
+  }
 
-        /* تفاصيل الفرح */
-        .details-box {
-            background: #eae6df;
-            padding: 30px 20px;
-            margin: 40px 20px;
-            border-radius: 15px;
-            border: 1px dashed var(--accent-color);
-        }
+  /* ── PARTICLE CANVAS ── */
+  #particle-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999;
+  }
 
-        /* تأكيد الحضور */
-        .rsvp-section { background: var(--card-bg); padding: 40px 20px; border-top: 1px solid #e6e2da; }
-        .btn {
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 12px 35px;
-            font-size: 1.1rem;
-            border-radius: 25px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 15px;
-            font-family: 'Tajawal', sans-serif;
-        }
-    </style>
+  /* ── OPENING SCREEN ── */
+  #opening {
+    position: fixed;
+    inset: 0;
+    background: var(--ivory);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 900;
+    transition: opacity 1.2s ease, visibility 1.2s ease;
+  }
+  #opening.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .opening-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3.5rem, 12vw, 7rem);
+    color: var(--mocha);
+    line-height: 1;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: riseIn 1.2s ease forwards 0.6s;
+  }
+  .opening-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--sage);
+    letter-spacing: 0.12em;
+    margin-top: 0.6rem;
+    opacity: 0;
+    animation: riseIn 1s ease forwards 1.4s;
+  }
+  .opening-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 1.2rem auto;
+    opacity: 0;
+    animation: riseIn 1s ease forwards 1.8s;
+  }
+  .opening-date {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    letter-spacing: 0.35em;
+    color: var(--mocha);
+    opacity: 0;
+    animation: riseIn 1s ease forwards 2s;
+  }
+  .open-btn {
+    margin-top: 2.8rem;
+    padding: 0.75rem 2.5rem;
+    border: 1px solid var(--gold);
+    background: transparent;
+    color: var(--mocha);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    opacity: 0;
+    animation: riseIn 1s ease forwards 2.4s;
+  }
+  .open-btn:hover { background: var(--gold); color: #fff; }
+
+  @keyframes riseIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MAIN INVITATION ── */
+  #invitation {
+    display: none;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  #invitation.visible { display: block; }
+
+  /* header */
+  .inv-header {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+    position: relative;
+  }
+  .inv-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.72rem;
+    letter-spacing: 0.4em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .inv-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    color: var(--mocha);
+    line-height: 1.1;
+  }
+  .inv-ampersand {
+    display: block;
+    font-size: 0.6em;
+    color: var(--gold);
+    margin: -0.3em 0;
+  }
+  .inv-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--sage);
+    font-size: 1.15rem;
+    margin-top: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* botanical SVG dividers */
+  .botanical {
+    display: block;
+    margin: 1.5rem auto;
+    opacity: 0.6;
+  }
+
+  /* sections */
+  .section {
+    text-align: center;
+    margin: 2.5rem 0;
+    padding: 2rem 1.5rem;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(197,212,192,0.4);
+    border-radius: 2px;
+  }
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .section-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--mocha);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .section-sub {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 0.82rem;
+    color: var(--sage);
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+  }
+  .section-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.95rem;
+    margin-top: 0.6rem;
+  }
+
+  /* countdown */
+  .countdown-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .countdown-unit { text-align: center; }
+  .countdown-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--mocha);
+    line-height: 1;
+  }
+  .countdown-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  /* map btn */
+  .map-btn {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.6rem 2rem;
+    border: 1px solid var(--sage);
+    color: var(--sage);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .map-btn:hover { background: var(--sage); color: #fff; }
+
+  /* wishes form */
+  .wishes-section {
+    text-align: center;
+    margin: 2.5rem 0;
+    padding: 2.5rem 1.5rem;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(197,212,192,0.4);
+    border-radius: 2px;
+  }
+  .wishes-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    color: var(--mocha);
+    margin-bottom: 0.3rem;
+  }
+  .wishes-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--sage);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+  }
+  .field-group { margin-bottom: 1.2rem; text-align: left; }
+  .field-label {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .field-input, .field-textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--sage-light);
+    background: transparent;
+    padding: 0.5rem 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .field-input:focus, .field-textarea:focus { border-color: var(--gold); }
+  .field-textarea { resize: vertical; min-height: 90px; }
+  .send-btn {
+    margin-top: 1rem;
+    width: 100%;
+    padding: 0.85rem;
+    background: var(--mocha);
+    color: var(--ivory);
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .send-btn:hover { background: var(--gold); }
+  .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .form-success {
+    display: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--sage);
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid var(--sage-light);
+  }
+
+  /* footer */
+  .inv-footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--sage-light);
+    font-size: 0.85rem;
+  }
+
+  /* music */
+  #music-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+    border: 1px solid var(--sage-light);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 800;
+    transition: background 0.3s;
+    backdrop-filter: blur(6px);
+  }
+  #music-btn:hover { background: var(--sage-light); }
+
+  @media (max-width: 480px) {
+    .section { padding: 1.5rem 1rem; }
+    .countdown-grid { gap: 1.2rem; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="header-section">
-        <h1>عمرو & ريم</h1>
-        <p style="color: #888; font-size: 1.1rem;">يسعدنا دعوتكم لمشاركتنا فرحتنا</p>
-        <div class="date">25 يوليو 2026</div>
+<!-- PARTICLE CANVAS -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+  <source src="https://cdn.pixabay.com/audio/2024/02/15/audio_1a9e2e3f9f.mp3" type="audio/mpeg"/>
+</audio>
+
+<!-- ── OPENING SCREEN ── -->
+<div id="opening">
+  <div class="opening-names">Reem &amp; Amr</div>
+  <div class="opening-tagline">Together with joy &amp; love</div>
+  <div class="opening-divider"></div>
+  <div class="opening-date">25 · 07 · 2026</div>
+  <button class="open-btn" onclick="openInvitation()">Open Invitation</button>
+</div>
+
+<!-- ── MAIN INVITATION ── -->
+<div id="invitation">
+
+  <!-- Header -->
+  <header class="inv-header">
+    <p class="inv-eyebrow" style="font-family:'Scheherazade New',serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--mocha);">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+    <p style="font-family:'Scheherazade New',serif;font-size:0.95rem;color:var(--text);line-height:1.9;margin:0.8rem 1rem 0.4rem;direction:rtl;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;color:var(--sage);letter-spacing:0.08em;margin-bottom:1.2rem;">— Surah Ar-Rum: 21</p>
+
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;">You are invited to join us on Saturday, July 25th,<br>for the wedding of</p>
+
+    <div class="inv-names">
+      Reem<span class="inv-ampersand">&amp;</span>Amr
     </div>
 
-    <div class="music-player">
-        <p>🎵 الموسيقى الخلفية</p>
-        <audio autoplay loop controls id="bgMusic">
-            <source src="Swany.mp3" type="audio/mpeg">
-            متصفحك لا يدعم تشغيل الصوت.
-        </audio>
+    <!-- Botanical bottom -->
+    <svg class="botanical" width="200" height="40" viewBox="0 0 200 40">
+      <path d="M100 20 Q80 35 60 28 Q70 18 100 20Z" fill="#8A9E85" opacity="0.5"/>
+      <path d="M100 20 Q120 35 140 28 Q130 18 100 20Z" fill="#8A9E85" opacity="0.5"/>
+      <path d="M100 20 Q75 25 55 15 Q70 10 100 20Z" fill="#C5D4C0" opacity="0.5"/>
+      <path d="M100 20 Q125 25 145 15 Q130 10 100 20Z" fill="#C5D4C0" opacity="0.5"/>
+      <line x1="30" y1="20" x2="170" y2="20" stroke="#C9A96E" stroke-width="0.5" opacity="0.5"/>
+      <circle cx="100" cy="20" r="2" fill="#C9A96E" opacity="0.7"/>
+    </svg>
+  </header>
+
+  <!-- Happiness note -->
+  <div class="section">
+    <p class="section-note" style="font-size:1.05rem;line-height:1.8;">We will be more than happy to have you join us<br>as we begin our forever.</p>
+  </div>
+
+  <!-- Date & Time -->
+  <div class="section">
+    <p class="section-label">Date &amp; Time</p>
+    <p class="section-main">Saturday, 25th July 2026</p>
+    <p class="section-sub">Doors open at 6:00 PM</p>
+  </div>
+
+  <!-- Countdown -->
+  <div class="section">
+    <p class="section-label">Counting down to forever</p>
+    <div class="countdown-grid">
+      <div class="countdown-unit"><div class="countdown-num" id="cd-days">--</div><div class="countdown-label">Days</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-hours">--</div><div class="countdown-label">Hours</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-mins">--</div><div class="countdown-label">Minutes</div></div>
+      <div class="countdown-unit"><div class="countdown-num" id="cd-secs">--</div><div class="countdown-label">Seconds</div></div>
     </div>
+  </div>
 
-    <h2 style="color: var(--accent-color);">العد التنازلي لليوم المنتظر 🤍</h2>
-    <div class="countdown-container">
-        <div class="time-box"><span id="days">00</span><label>أيام</label></div>
-        <div class="time-box"><span id="hours">00</span><label>ساعات</label></div>
-        <div class="time-box"><span id="minutes">00</span><label>دقائق</label></div>
+  <!-- Venue -->
+  <div class="section">
+    <p class="section-label">Venue</p>
+    <p class="section-main">Villa Al Bashari</p>
+    <p class="section-sub">Abu El Numrus, Giza</p>
+    <a class="map-btn" href="https://maps.app.goo.gl/samplelink" target="_blank">View on Map</a>
+  </div>
+
+
+  <!-- Wishes Form -->
+  <div class="wishes-section">
+    <div class="wishes-title">Leave a Wish</div>
+    <p class="wishes-sub">Your words mean the world to us</p>
+
+    <div id="wish-form">
+      <div class="field-group">
+        <label class="field-label" for="guest-name">Your Name</label>
+        <input class="field-input" type="text" id="guest-name" placeholder="Enter your name" required/>
+      </div>
+      <div class="field-group">
+        <label class="field-label" for="guest-wish">Your Wish</label>
+        <textarea class="field-textarea" id="guest-wish" placeholder="Write your heartfelt wish..." required></textarea>
+      </div>
+      <button class="send-btn" id="send-btn" onclick="sendWish()">Send Wish ✦</button>
+      <div class="form-success" id="form-success">
+        Thank you! Your wish has been received with love 🌸
+      </div>
     </div>
+  </div>
 
-    <div class="story-section">
-        <h2 style="color: var(--accent-color); margin-bottom: 30px;">حكايتنا ✨</h2>
-        
-        <div class="chapter-card">
-            <img src="Chapter1.jpg" alt="Chapter 1">
-            <div class="chapter-content">
-                <h3>الفصل الأول: البداية</h3>
-                <p>تفاصيل القصة الأولى والترتيبات الجميلة...</p>
-            </div>
-        </div>
+  <footer class="inv-footer">
+    With love, we are waiting for you 🌸<br>
+    <span style="font-size:0.78rem;letter-spacing:0.2em;">Reem &amp; Amr · 25 · 07 · 2026</span>
+  </footer>
+</div>
 
-        <div class="chapter-card">
-            <img src="Chapter2.jpg" alt="Chapter 2">
-            <div class="chapter-content">
-                <h3>الفصل الثاني: التفاصيل</h3>
-                <p>حكاية التخطيط والخطوات اللي مشيناها سوا...</p>
-            </div>
-        </div>
+<!-- Music Toggle -->
+<button id="music-btn" title="Toggle music" onclick="toggleMusic()">🎵</button>
 
-        <div class="chapter-card">
-            <img src="Chapter3.jpg" alt="Chapter 3">
-            <div class="chapter-content">
-                <h3>الفصل الثالث: يوم الخطوبة</h3>
-                <p>ذكريات اليوم اللي جمعنا وبداية الحلم الكبير...</p>
-            </div>
-        </div>
+<script>
+/* ── PARTICLES ── */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let animating = true;
 
-        <div class="chapter-card">
-            <img src="Chapter4.jpg" alt="Chapter 4">
-            <div class="chapter-content">
-                <h3>الفصل الرابع: فرحتنا الكبيرة</h3>
-                <p>تجهيز مكاننا وفرحتنا الكبيرة اللي بتكمل بيكم في الفيلا...</p>
-            </div>
-        </div>
-    </div>
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
 
-    <div class="details-box">
-        <h3>تفاصيل حفل الزفاف</h3>
-        <p>📍 <strong>المكان:</strong> Villa Bashari, Giza</p>
-        <p>⏰ <strong>الوقت:</strong> الساعة 6:00 مساءً</p>
-    </div>
+// Particle types: petal, leaf, sparkle
+function randomColor(type) {
+  if (type === 'petal') return ['#F4B8C1','#F9D4D9','#E8A0AA','#FADADD'][Math.floor(Math.random()*4)];
+  if (type === 'leaf')  return ['#8A9E85','#C5D4C0','#6B8F6B','#A8C5A0'][Math.floor(Math.random()*4)];
+  return '#C9A96E';
+}
 
-    <div class="rsvp-section">
-        <h3>هل ستشاركونا الفرحة؟</h3>
-        <p>نرجو تأكيد حضوركم عبر الرابط التالي:</p>
-        <a href="https://forms.google.com" target="_blank" class="btn">تأكيد الحضور (RSVP)</a>
-    </div>
+function createParticle() {
+  const types = ['petal','petal','leaf','leaf','sparkle','sparkle','sparkle'];
+  const type = types[Math.floor(Math.random()*types.length)];
+  return {
+    type,
+    x: Math.random() * canvas.width,
+    y: -20,
+    size: type === 'sparkle' ? Math.random()*3+2 : Math.random()*14+8,
+    speedY: Math.random()*1.5+0.8,
+    speedX: (Math.random()-0.5)*0.8,
+    rotation: Math.random()*360,
+    rotSpeed: (Math.random()-0.5)*2,
+    opacity: Math.random()*0.6+0.4,
+    color: randomColor(type),
+    wobble: Math.random()*Math.PI*2,
+    wobbleSpeed: Math.random()*0.03+0.01,
+    life: 1,
+  };
+}
 
-    <p style="margin: 40px 0; color: #aaa; font-size: 0.8rem;">صنع بحب لـ عمرو & ريم 🤍</p>
+function drawParticle(p) {
+  ctx.save();
+  ctx.globalAlpha = p.opacity * p.life;
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.rotation * Math.PI/180);
 
-    <script {
-        const weddingDate = new Date("July 25, 2026 18:00:00").getTime();
-        
-        setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-            
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            
-            document.getElementById("days").innerText = days;
-            document.getElementById("hours").innerText = hours;
-            document.getElementById("minutes").innerText = minutes;
-        }, 1000);
+  if (p.type === 'petal') {
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.ellipse(0, 0, p.size/2, p.size, 0, 0, Math.PI*2);
+    ctx.fill();
+    // vein
+    ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(0, -p.size);
+    ctx.lineTo(0, p.size);
+    ctx.stroke();
+  } else if (p.type === 'leaf') {
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.moveTo(0, -p.size);
+    ctx.bezierCurveTo(p.size*0.8, -p.size*0.4, p.size*0.8, p.size*0.4, 0, p.size);
+    ctx.bezierCurveTo(-p.size*0.8, p.size*0.4, -p.size*0.8, -p.size*0.4, 0, -p.size);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+    ctx.lineWidth = 0.5;
+    ctx.beginPath();
+    ctx.moveTo(0,-p.size); ctx.lineTo(0,p.size);
+    ctx.stroke();
+  } else {
+    // sparkle: 4-pointed star
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    for (let i=0;i<4;i++) {
+      const angle = (i/4)*Math.PI*2;
+      const ox = Math.cos(angle)*p.size;
+      const oy = Math.sin(angle)*p.size;
+      const ix = Math.cos(angle+Math.PI/4)*p.size*0.2;
+      const iy = Math.sin(angle+Math.PI/4)*p.size*0.2;
+      i===0 ? ctx.moveTo(ox,oy) : ctx.lineTo(ox,oy);
+      ctx.lineTo(ix,iy);
+    }
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+}
 
-        window.addEventListener('click', () => {
-            const audio = document.getElementById('bgMusic');
-            audio.play().catch(e => console.log("Autoplay blocked"));
-        }, { once: true });
-    </script>
+let lastSpawn = 0;
+function animate(ts) {
+  if (!animating) return;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  if (ts - lastSpawn > 80) {
+    particles.push(createParticle());
+    lastSpawn = ts;
+  }
+  if (particles.length > 120) particles.splice(0, particles.length-120);
+
+  particles = particles.filter(p => {
+    p.wobble += p.wobbleSpeed;
+    p.x += p.speedX + Math.sin(p.wobble)*0.5;
+    p.y += p.speedY;
+    p.rotation += p.rotSpeed;
+    if (p.y > canvas.height - 60) p.life -= 0.03;
+    drawParticle(p);
+    return p.y < canvas.height + 20 && p.life > 0;
+  });
+
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+
+/* ── OPEN INVITATION ── */
+function openInvitation() {
+  document.getElementById('opening').classList.add('hidden');
+  setTimeout(()=>{
+    document.getElementById('invitation').classList.add('visible');
+    // slow particles after opening
+    setTimeout(()=>{ animating = false; ctx.clearRect(0,0,canvas.width,canvas.height); }, 8000);
+  }, 1200);
+  // try autoplay
+  const audio = document.getElementById('bg-music');
+  audio.volume = 0.35;
+  audio.play().catch(()=>{});
+}
+
+/* ── COUNTDOWN ── */
+function updateCountdown() {
+  const target = new Date('2026-07-25T18:00:00');
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.querySelectorAll('.countdown-num').forEach(el=>el.textContent='0');
+    return;
+  }
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* ── MUSIC ── */
+function toggleMusic() {
+  const audio = document.getElementById('bg-music');
+  const btn = document.getElementById('music-btn');
+  if (audio.paused) { audio.play(); btn.textContent='🎵'; }
+  else              { audio.pause(); btn.textContent='🔇'; }
+}
+
+/* ── FORMSPREE WISHES ── */
+async function sendWish() {
+  const name = document.getElementById('guest-name').value.trim();
+  const wish = document.getElementById('guest-wish').value.trim();
+  if (!name || !wish) { alert('Please enter your name and wish 🌸'); return; }
+
+  const btn = document.getElementById('send-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    const res = await fetch('https://formspree.io/f/mbdeanjp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, wish })
+    });
+    if (res.ok) {
+      document.getElementById('wish-form').querySelector('.field-group:nth-child(1) input').value='';
+      document.getElementById('wish-form').querySelector('textarea').value='';
+      const success = document.getElementById('form-success');
+      success.style.display = 'block';
+      btn.textContent = 'Sent ✦';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Wish ✦';
+      alert('Something went wrong, please try again.');
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = 'Send Wish ✦';
+    alert('Connection error, please try again.');
+  }
+}
+</script>
 </body>
 </html>
