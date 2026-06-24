@@ -352,12 +352,20 @@
 
 <!-- AUDIO -->
 <audio id="bg-music" loop>
-  <source src="https://cdn.pixabay.com/audio/2024/02/15/audio_1a9e2e3f9f.mp3" type="audio/mpeg"/>
+  <source src="07.El_Leila.mp3>
 </audio>
+   <script>
+  const audio = document.getElementById('bg-music');
+  audio.addEventListener('timeupdate', () => {
+    if (audio.currentTime >= 30) {
+      audio.pause();
+    }
+  });
+</script>
 
 <!-- ── OPENING SCREEN ── -->
 <div id="opening">
-  <div class="opening-names">Reem &amp; Amr</div>
+  <div class="opening-names">AMR &amp; REEM</div>
   <div class="opening-tagline">Together with joy &amp; love</div>
   <div class="opening-divider"></div>
   <div class="opening-date">25 · 07 · 2026</div>
