@@ -4,7 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Reem and Amr — Wedding Invitation</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet"/>
+<!-- استدعاء خط Playfair Display الجديد بدلاً من الخط القديم -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Jost:wght@300;400&family=Scheherazade+New:wght@400;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -50,25 +51,26 @@
     visibility: hidden;
   }
 
-  /* تعديل خط الأسماء في الشاشة الافتتاحية */
+  /* تعديل الخط هنا للخط الفخم الجديد Playfair Display بشكل مائل أنيق */
   .opening-names {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700; /* خط عريض وراقي جداً */
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(2.3rem, 7vw, 4.5rem);
     color: var(--mocha);
-    line-height: 1.2;
+    line-height: 1.3;
     text-align: center;
     opacity: 0;
     transform: translateY(20px);
     animation: riseIn 1.2s ease forwards 0.6s;
   }
   .opening-tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-size: clamp(1rem, 3vw, 1.4rem);
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
     color: var(--sage);
-    letter-spacing: 0.12em;
-    margin-top: 0.6rem;
+    letter-spacing: 0.1em;
+    margin-top: 0.8rem;
     opacity: 0;
     animation: riseIn 1s ease forwards 1.4s;
   }
@@ -134,20 +136,21 @@
     text-transform: uppercase;
     margin-bottom: 1rem;
   }
-  /* تعديل خط الأسماء في الدعوة الداخلية */
+  /* تطبيق الخط الجديد داخل الدعوة أيضاً */
   .inv-names {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 700;
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(2.3rem, 7vw, 4rem);
     color: var(--mocha);
-    line-height: 1.2;
-    margin: 1rem 0;
+    line-height: 1.3;
+    margin: 1.2rem 0;
   }
   .inv-tagline {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     color: var(--sage);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     margin-top: 0.8rem;
     letter-spacing: 0.05em;
   }
@@ -177,10 +180,10 @@
     margin-bottom: 0.8rem;
   }
   .section-main {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3.8vw, 1.8rem);
     color: var(--mocha);
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.4;
   }
   .section-sub {
@@ -195,7 +198,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     color: var(--gold);
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     margin-top: 0.6rem;
   }
 
@@ -209,7 +212,7 @@
   }
   .countdown-unit { text-align: center; }
   .countdown-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: clamp(2rem, 6vw, 3rem);
     color: var(--mocha);
     line-height: 1;
@@ -248,13 +251,14 @@
     border-radius: 2px;
   }
   .wishes-title {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
     font-size: clamp(2rem, 6vw, 2.8rem);
     color: var(--mocha);
     margin-bottom: 0.3rem;
   }
   .wishes-sub {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     color: var(--sage);
     font-size: 0.95rem;
@@ -276,7 +280,7 @@
     border-bottom: 1px solid var(--sage-light);
     background: transparent;
     padding: 0.5rem 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-size: 1.05rem;
     color: var(--text);
     outline: none;
@@ -302,7 +306,7 @@
   .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
   .form-success {
     display: none;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     color: var(--sage);
     font-size: 1.1rem;
@@ -315,7 +319,7 @@
   .inv-footer {
     text-align: center;
     padding: 2rem 0 1rem;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     color: var(--sage-light);
     font-size: 0.85rem;
@@ -354,7 +358,6 @@
 </audio>
 
 <div id="opening">
-  <!-- الشاشة الافتتاحية باسم Reem and Amr بالخط الكلاسيكي الجديد -->
   <div class="opening-names">Reem and Amr</div>
   <div class="opening-tagline">Together with joy & love</div>
   <div class="opening-divider"></div>
@@ -367,12 +370,10 @@
   <header class="inv-header">
     <p class="inv-eyebrow" style="font-family:'Scheherazade New',serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--mocha);">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
     <p style="font-family:'Scheherazade New',serif;font-size:0.95rem;color:var(--text);line-height:1.9;margin:0.8rem 1rem 0.4rem;direction:rtl;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.78rem;color:var(--sage);letter-spacing:0.08em;margin-bottom:1.2rem;">— Surah Ar-Rum: 21</p>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:0.85rem;color:var(--sage);letter-spacing:0.08em;margin-bottom:1.2rem;">— Surah Ar-Rum: 21</p>
 
-    <!-- تعديل صياغة الجملة الإنجليزية حسب طلبك -->
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;">You are invited to join us for the wedding of</p>
+    <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;">You are invited to join us for the wedding of</p>
 
-    <!-- تعديل ترتيب الأسماء والخط الكلاسيكي الفخم العريض داخل الدعوة -->
     <div class="inv-names">
       Reem and Amr
     </div>
@@ -394,7 +395,7 @@
   <div class="section">
     <p class="section-label">Date & Time</p>
     <p class="section-main">Saturday, 25th July 2026</p>
-    <p class="section-sub">Doors open at 6:00 PM</p>
+    <p class="section-sub">Doors open at 6:30 PM</p>
   </div>
 
   <div class="section">
@@ -412,7 +413,6 @@
     <p class="section-main">Villa Al Bashari,Giza</p>
     <a class="map-btn" href="https://maps.app.goo.gl/T1YjTDhB2CP6t1NA9?g_st=aw"target="_blank">View on Map</a>
   </div>
-
 
   <div class="wishes-section">
     <div class="wishes-title">Leave a Wish</div>
@@ -638,4 +638,3 @@ async function sendWish() {
 </script>
 </body>
 </html>
-
