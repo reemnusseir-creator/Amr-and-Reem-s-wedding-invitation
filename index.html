@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Reem & Amr — Wedding Invitation</title>
+<title>Amr and Reem — Wedding Invitation</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -347,35 +347,22 @@
 </head>
 <body>
 
-<!-- PARTICLE CANVAS -->
 <canvas id="particle-canvas"></canvas>
 
-<!-- AUDIO -->
 <audio id="bg-music" loop>
-  <source src="07.El_Leila.mp3>
+  <source src="07.El_Leila.mp3" type="audio/mpeg"/>
 </audio>
-   <script>
-  const audio = document.getElementById('bg-music');
-  audio.addEventListener('timeupdate', () => {
-    if (audio.currentTime >= 90) {
-      audio.pause();
-    }
-  });
-</script>
 
-<!-- ── OPENING SCREEN ── -->
 <div id="opening">
-  <div class="opening-names">AMR &amp; REEM</div>
-  <div class="opening-tagline">Together with joy &amp; love</div>
+  <div class="opening-names">Amr and Reem</div>
+  <div class="opening-tagline">Together with joy & love</div>
   <div class="opening-divider"></div>
   <div class="opening-date">25 · 07 · 2026</div>
   <button class="open-btn" onclick="openInvitation()">Open Invitation</button>
 </div>
 
-<!-- ── MAIN INVITATION ── -->
 <div id="invitation">
 
-  <!-- Header -->
   <header class="inv-header">
     <p class="inv-eyebrow" style="font-family:'Scheherazade New',serif;font-size:1.1rem;letter-spacing:0.1em;color:var(--mocha);">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
     <p style="font-family:'Scheherazade New',serif;font-size:0.95rem;color:var(--text);line-height:1.9;margin:0.8rem 1rem 0.4rem;direction:rtl;">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
@@ -384,10 +371,9 @@
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:0.5rem;">You are invited to join us on Saturday, July 25th,<br>for the wedding of</p>
 
     <div class="inv-names">
-      Reem<span class="inv-ampersand">&amp;</span>Amr
+      Amr and Reem
     </div>
 
-    <!-- Botanical bottom -->
     <svg class="botanical" width="200" height="40" viewBox="0 0 200 40">
       <path d="M100 20 Q80 35 60 28 Q70 18 100 20Z" fill="#8A9E85" opacity="0.5"/>
       <path d="M100 20 Q120 35 140 28 Q130 18 100 20Z" fill="#8A9E85" opacity="0.5"/>
@@ -398,19 +384,16 @@
     </svg>
   </header>
 
-  <!-- Happiness note -->
   <div class="section">
     <p class="section-note" style="font-size:1.05rem;line-height:1.8;">We will be more than happy to have you join us<br>as we begin our forever.</p>
   </div>
 
-  <!-- Date & Time -->
   <div class="section">
-    <p class="section-label">Date &amp; Time</p>
+    <p class="section-label">Date & Time</p>
     <p class="section-main">Saturday, 25th July 2026</p>
     <p class="section-sub">Doors open at 6:00 PM</p>
   </div>
 
-  <!-- Countdown -->
   <div class="section">
     <p class="section-label">Counting down to forever</p>
     <div class="countdown-grid">
@@ -421,7 +404,6 @@
     </div>
   </div>
 
-  <!-- Venue -->
   <div class="section">
     <p class="section-label">Venue</p>
     <p class="section-main">Villa Al Bashari</p>
@@ -430,7 +412,6 @@
   </div>
 
 
-  <!-- Wishes Form -->
   <div class="wishes-section">
     <div class="wishes-title">Leave a Wish</div>
     <p class="wishes-sub">Your words mean the world to us</p>
@@ -453,11 +434,10 @@
 
   <footer class="inv-footer">
     With love, we are waiting for you 🌸<br>
-    <span style="font-size:0.78rem;letter-spacing:0.2em;">Reem &amp; Amr · 25 · 07 · 2026</span>
+    <span style="font-size:0.78rem;letter-spacing:0.2em;">Amr and Reem · 25 · 07 · 2026</span>
   </footer>
 </div>
 
-<!-- Music Toggle -->
 <button id="music-btn" title="Toggle music" onclick="toggleMusic()">🎵</button>
 
 <script>
@@ -617,6 +597,14 @@ function toggleMusic() {
   if (audio.paused) { audio.play(); btn.textContent='🎵'; }
   else              { audio.pause(); btn.textContent='🔇'; }
 }
+
+// كود إيقاف الأوديو عند الوصول لـ 30 ثانية تلقائياً
+const audioTrack = document.getElementById('bg-music');
+audioTrack.addEventListener('timeupdate', () => {
+  if (audioTrack.currentTime >= 30) {
+    audioTrack.pause();
+  }
+});
 
 /* ── FORMSPREE WISHES ── */
 async function sendWish() {
